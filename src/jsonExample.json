@@ -1,0 +1,12 @@
+{
+  "month": "string",
+  "title": "string",
+  "date": "DD-MM-YYYY",
+  "spent": -0,
+  "gain": 0,
+  "category1": "string",
+  "category2": "string"
+}
+// "totalMoney": 0,
+// "beforeMoney": 0,
+// "afterMoney": 0,
