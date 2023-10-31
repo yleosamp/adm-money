@@ -23,15 +23,18 @@ export const addEntry = async (req: Request, res: Response) => {
     const updateTotal = await db.query(`UPDATE money SET totalmoney = ${total.rows[0].totalmoney} WHERE id = ${id}`)
     updateTotal
 
+    
+
     if(id > 1)  {
-      const selectBefore = await db.query(`SELECT totalmoney FROM money WHERE month = '${month}' AND id = ${id - 1}`)
-      const updateBefore = await db.query(`UPDATE money SET beforemoney = ${selectBefore.rows[0].totalmoney} WHERE id = ${id}`)
-      updateBefore
+      const selectBefore = await db.query(`SELECT totalmoney FROM money WHERE month = '${month}' AND id = ${id - 1}`);
+      const beforeMoney = selectBefore.rows[0] ? selectBefore.rows[0].totalmoney : null;
+      const updatedBeforeMoney = beforeMoney !== null ? beforeMoney : 0;
+    
+      const selectAfter = updatedBeforeMoney + add.rows[0].spent + add.rows[0].gain;
+    
+      const updateBefore = await db.query(`UPDATE money SET beforemoney = ${updatedBeforeMoney} WHERE id = ${id}`);
+      const updateAfter = await db.query(`UPDATE money SET aftermoney = ${selectAfter} WHERE id = ${id}`);
 
-      const selectAfter = selectBefore.rows[0].totalmoney + (add.rows[0].spent) + (add.rows[0].gain)
-
-      const updateAfter = await db.query(`UPDATE money SET aftermoney = ${selectAfter} WHERE id = ${id}`)
-      updateAfter
     } else {
       const updateBefore = await db.query(`UPDATE money SET beforemoney = 0 WHERE id = ${id}`)
       updateBefore
