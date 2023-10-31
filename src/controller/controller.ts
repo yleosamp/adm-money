@@ -23,8 +23,6 @@ export const addEntry = async (req: Request, res: Response) => {
     const updateTotal = await db.query(`UPDATE money SET totalmoney = ${total.rows[0].totalmoney} WHERE id = ${id}`)
     updateTotal
 
-    
-
     if(id > 1)  {
       const selectBefore = await db.query(`SELECT totalmoney FROM money WHERE month = '${month}' AND id = ${id - 1}`);
       const beforeMoney = selectBefore.rows[0] ? selectBefore.rows[0].totalmoney : null;
@@ -43,8 +41,6 @@ export const addEntry = async (req: Request, res: Response) => {
       const updateAfter = await db.query(`UPDATE money SET aftermoney = ${selectAfter} WHERE id = ${id}`)
       updateAfter
     }
-
-
     return res.status(201).json({ "ok": "ok" })
   } catch (error) {
     console.log("Erro ao inserir um registro: " + error)
@@ -57,7 +53,6 @@ export const listEntries = async (req: Request, res: Response) => {
   
   try {
     const listByMonth = await db.query(`SELECT * FROM money WHERE month = '${month}'`)
-
     return res.status(200).json(listByMonth.rows)
   } catch (error) {
     console.log("Erro ao listar os registros: " + error)
