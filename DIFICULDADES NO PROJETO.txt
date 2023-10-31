@@ -1,0 +1,4 @@
+DIFICULDADES NO PROJETO:
+
+A maior dificuldade foi verificar se o usuário já havia digitado um mes antes. E, caso ele ja tivesse digitado, o beforemoney iria ser o total do dinheiro anterior. Caso ele não tivesse digitado, o beforemoney e o total seriam resetados para equivaler ao mes digitado. Tive dificuldade pois isso me dava varios erros, e o before sempre era nulo caso digitasse um mes que nao existia ainda. Então, aproveitei disso para fazer uma condição: se o beforemoney for nulo, então quer dizer que o mês é novo, então o beforemoney deve ser zerado. E, como o aftermoney é baseado no beforemoney somado a ação do usuário (spent ou gain) ele também é zerado automaticamente. Sendo assim, o sistema funciona corretamente.
+A API está praticamente completa, agora basta implementar no front-end e verificar mais erros que poderão surgir e irão atrapalhar a experiencia do usuário.
