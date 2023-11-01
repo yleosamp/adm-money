@@ -59,3 +59,13 @@ export const listEntries = async (req: Request, res: Response) => {
     return res.status(500).json({ erro: error })
   }
 }
+
+export const deleteEntry = async (req: Request, res: Response) => {
+  const id = req.body.id
+  try {
+    const deleteQuery = await db.query(`DELETE FROM money WHERE id = ${id}`)
+  } catch (error) {
+    console.log("Erro ao deletar o registro: " + error)
+    return res.status(500).json({ erro: error })
+  }
+}
