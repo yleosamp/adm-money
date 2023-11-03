@@ -1,0 +1,59 @@
+.entry {
+  width: 308px;
+  height: 259px;
+
+  border-radius: 12px;
+  background: #131313;
+
+  margin: 50px 0;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 21px;
+
+  box-sizing: border-box;
+
+  line-height: 0.3;
+}
+
+.beforeAndAfter {
+  color: rgba(153, 245, 162, 0.52);
+}
+
+.money {
+  font-size: 32px;
+
+  font-weight: 400;
+}
+
+.date {
+  color: #606060;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.title {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.category {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 45px;
+}
+
+.category div {
+  border-radius: 12px;
+
+  width: 100px;
+  height: 36px;
+  
+  text-align: center;
+
+  background-color: #292929;
+
+  font-size: 16px;
+  font-weight: 300;
+}
