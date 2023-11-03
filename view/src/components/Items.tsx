@@ -8,7 +8,7 @@ const Items = () => {
   const [ref] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 2,
-      spacing: 15,
+      spacing: 1,
     },
   })
 

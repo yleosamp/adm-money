@@ -1,5 +1,6 @@
 import axios from "axios"
 import style from "./styles/options.module.css"
+import Modal from "./Modal"
 
 const Options = () => {
   return (
@@ -9,6 +10,8 @@ const Options = () => {
           <button className={ style.greenButton }><a href="#" >Adicionar entrada</a></button>
           <button className={ style.redButton }><a href="#">Adicionar gasto</a></button>
         </div>
+
+        <Modal isShow={true} />
 
         <div className={ style.months }>
           <h3>Selecione um mês</h3>
