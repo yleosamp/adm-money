@@ -1,17 +1,20 @@
 import axios from "axios"
 import style from "./styles/options.module.css"
 import Modal from "./Modal"
+import { useState } from "react"
 
 const Options = () => {
+  const [modal, setModal] = useState(false)
+
   return (
     <>
       <div className={ style.options }>
         <div className={ style.buttons }>
-          <button className={ style.greenButton }><a href="#" >Adicionar entrada</a></button>
-          <button className={ style.redButton }><a href="#">Adicionar gasto</a></button>
+          <button className={ style.greenButton } onClick={ () => setModal(!modal) }><a href="#" >Adicionar entrada</a></button>
+          <button className={ style.redButton } onClick={ () => setModal(!modal) }><a href="#">Adicionar gasto</a></button>
         </div>
 
-        <Modal isShow={true} />
+        <Modal isShow={modal} />
 
         <div className={ style.months }>
           <h3>Selecione um mês</h3>
