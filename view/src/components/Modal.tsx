@@ -18,7 +18,7 @@ const Modal = (props: Props) => {
               <input type="date" name="data" placeholder="Data" />
             </div>
 
-            <input type="text" name="categoria" placeholder="Categoria" />
+            <input type="text" name="categoria" placeholder="Categoria " />
             <input type="submit" value="Adicionar" className={ style.submit } />
           </form>
         </div>
