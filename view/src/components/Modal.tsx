@@ -1,4 +1,5 @@
-import { useState } from "react"
+import axios, { AxiosResponse } from "axios"
+import { ReactNode, useState } from "react"
 import style from "./styles/modal.module.css"
 
 type Props = {
@@ -11,17 +12,34 @@ const Modal = (props: Props) => {
   const [date, setDate] = useState("")
   const [category, setCategory] = useState("")
 
+  const createEntry = (ev) => {
+    //ev.preventDefault()
+
+    axios.post("http://localhost:3000/api/gain", {
+      title: title,
+      gain: value,
+      date: date,
+      category1: "Ganho",
+      category2: category,
+      month: "Teste",
+      spent: 0
+    })
+    .then((response) => {
+      console.log("Entrada adicionada com sucesso!")
+    })
+  }
+
   if(props.isShow) {
     return (
       <div className={ style.modal_background } >
         <div className={ style.modal_options } >
           <h1>Adicionar entrada</h1>
 
-          <form>
+          <form onSubmit={ (ev) => createEntry(ev) }>
             <input type="text" name="titulo" placeholder="Título" onChange={ (e) => setTitle(e.currentTarget.value) }/>
 
             <div className={ style.valueAndDate }>
-              <input type="number" name="valor" placeholder="Valor" value={ 0 } onChange={ (e) => setValue(parseFloat(e.currentTarget.value)) } style={{ marginRight: '10px' }}/>
+              <input type="number" name="valor" placeholder="Valor"  onChange={ (e) => setValue(parseFloat(e.currentTarget.value)) } style={{ marginRight: '10px' }}/>
               <input type="date" name="data" placeholder="Data" onChange={ (e) => setDate(e.currentTarget.value) } />
             </div>
 
