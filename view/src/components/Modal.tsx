@@ -29,6 +29,11 @@ const Modal = (props: Props) => {
     })
   }
 
+  // FAZER O CALCULO DO MES!
+  // EXEMPLO: 11/02/2023. O MONTH VAI TER QUE SEI FEVEREIRO!
+  // DICA, PARA NÃO ESQUECER: DIVIDIR A STRING COM SPLIT, PEGAR O ÍNDICE 1
+  // E FAZER UM SWITCH, DAI O RESTO JÁ VOU LEMBRAR!!
+
   if(props.isShow) {
     return (
       <div className={ style.modal_background } >
