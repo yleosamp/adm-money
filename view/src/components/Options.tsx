@@ -1,10 +1,23 @@
 import axios from "axios"
 import style from "./styles/options.module.css"
 import Modal from "./Modal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Options = () => {
   const [modal, setModal] = useState(false)
+  const [totalMoney, setTotalMoney] = useState(0)
+
+  useEffect(() => {
+    axios.post("http://localhost:3000/api/list", {
+      month: "Setembro"
+    })
+    .then(response => {
+      const money = response.data
+      const arrLength = money.length - 1
+      setTotalMoney(money[arrLength].totalmoney)
+      console.log(totalMoney)
+    })
+  }, [])
 
   return (
     <>
@@ -36,7 +49,7 @@ const Options = () => {
 
         <div className={ style.saldo }>
           <h2>Saldo</h2>
-          <h3>R$ 000</h3>
+          <h3>R$ { totalMoney }</h3>
         </div>
       </div>
     </>
