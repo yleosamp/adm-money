@@ -64,24 +64,34 @@ const Modal = (props: Props) => {
   const createEntry = () => {
     //ev.preventDefault()
 
-    axios.post("http://localhost:3000/api/gain", {
-      title: title,
-      gain: value,
-      date: date,
-      category1: "Ganho",
-      category2: category,
-      month: verifyMonth(),
-      spent: 0
-    })
-    .then( (response: AxiosResponse) => {
-      console.log("Entrada adicionada com sucesso!")
-    })
+    if(value > 0) {
+      axios.post("http://localhost:3000/api/gain", {
+        title: title,
+        gain: value,
+        date: date,
+        category1: "Ganho",
+        category2: category,
+        month: verifyMonth(),
+        spent: 0
+      })
+      .then( (response: AxiosResponse) => {
+        console.log("Entrada adicionada com sucesso!")
+      })
+    } else {
+      axios.post("http://localhost:3000/api/spent", {
+        title: title,
+        gain: 0,
+        date: date,
+        category1: "Gasto",
+        category2: category,
+        month: verifyMonth(),
+        spent: value
+      })
+      .then( (response: AxiosResponse) => {
+        console.log("Entrada adicionada com sucesso!")
+      })
+    }
   }
-
-  // FAZER O CALCULO DO MES!
-  // EXEMPLO: 11/02/2023. O MONTH VAI TER QUE SEI FEVEREIRO!
-  // DICA, PARA NÃO ESQUECER: DIVIDIR A STRING COM SPLIT, PEGAR O ÍNDICE 1
-  // E FAZER UM SWITCH, DAI O RESTO JÁ VOU LEMBRAR!!
 
   if(props.isShow) {
     return (

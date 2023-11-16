@@ -57,3 +57,8 @@
   font-size: 16px;
   font-weight: 300;
 }
+
+.entries {
+  display: flex;
+  gap: 25px;
+}
