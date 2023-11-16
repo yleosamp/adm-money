@@ -34,18 +34,18 @@ const Options = () => {
         <div className={ style.months }>
           <h3>Selecione um mês</h3>
           <div className={ style.selections }>
-            <button>Janeiro</button>
-            <button>Fevereiro</button>
-            <button>Março</button>
-            <button>Abril</button>
-            <button>Maio</button>
-            <button>Junho</button>
-            <button>Julho</button>
-            <button>Agosto</button>
+            <button onClick={ () => setMonth("Janeiro") }>Janeiro</button>
+            <button onClick={ () => setMonth("Fevereiro") }>Fevereiro</button>
+            <button onClick={ () => setMonth("Março") }>Março</button>
+            <button onClick={ () => setMonth("Abril") }>Abril</button>
+            <button onClick={ () => setMonth("Maio") }>Maio</button>
+            <button onClick={ () => setMonth("Junho") }>Junho</button>
+            <button onClick={ () => setMonth("Julho") }>Julho</button>
+            <button onClick={ () => setMonth("Agosto") }>Agosto</button>
             <button onClick={ () => setMonth("Setembro") }>Setembro</button>
             <button onClick={ () => setMonth("Outubro") }>Outubro</button>
-            <button>Novembro</button>
-            <button>Dezembro</button>
+            <button onClick={ () => setMonth("Novembro") }>Novembro</button>
+            <button onClick={ () => setMonth("Dezembro") }>Dezembro</button>
           </div>
         </div>
 
