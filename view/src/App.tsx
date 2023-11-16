@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Options />
-      <Items />
+
       {/* <h1>Hello World!</h1> */}
     </>
   )

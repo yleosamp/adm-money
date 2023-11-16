@@ -4,8 +4,11 @@ import 'keen-slider/keen-slider.min.css'
 import style from "./styles/items.module.css"
 import { useEffect, useState } from "react"
 
+type Props = {
+  selectedMonth: string
+}
 
-const Items = () => {
+const Items = (props: Props) => {
   const [items, setItems] = useState([])
 
   const [ref] = useKeenSlider<HTMLDivElement>({
@@ -17,7 +20,7 @@ const Items = () => {
 
   useEffect(() => {
     axios.post("http://localhost:3000/api/list", {
-      month: "Setembro"
+      month: props.selectedMonth
     })
     .then(response => {
       const itemObject = response.data
@@ -25,7 +28,8 @@ const Items = () => {
       setItems(itemObject)
       console.log(items)
     })
-  }, [])
+  }, [props.selectedMonth])
+
 
   return (
     <>
@@ -58,9 +62,13 @@ const Items = () => {
           ))
         }
 
+        
       </div>
     </>
   )
+
 }
+
+
 
 export default Items

@@ -2,14 +2,16 @@ import axios from "axios"
 import style from "./styles/options.module.css"
 import Modal from "./Modal"
 import { useEffect, useState } from "react"
+import Items from "./Items"
 
 const Options = () => {
   const [modal, setModal] = useState(false)
   const [totalMoney, setTotalMoney] = useState(0)
+  const [month, setMonth] = useState("Outubro")
 
   useEffect(() => {
     axios.post("http://localhost:3000/api/list", {
-      month: "Setembro"
+      month: month
     })
     .then(response => {
       const money = response.data
@@ -17,7 +19,7 @@ const Options = () => {
       setTotalMoney(money[arrLength].totalmoney)
       console.log(totalMoney)
     })
-  }, [])
+  }, [month])
 
   return (
     <>
@@ -40,8 +42,8 @@ const Options = () => {
             <button>Junho</button>
             <button>Julho</button>
             <button>Agosto</button>
-            <button>Setembro</button>
-            <button>Outubro</button>
+            <button onClick={ () => setMonth("Setembro") }>Setembro</button>
+            <button onClick={ () => setMonth("Outubro") }>Outubro</button>
             <button>Novembro</button>
             <button>Dezembro</button>
           </div>
@@ -52,6 +54,8 @@ const Options = () => {
           <h3>R$ { totalMoney }</h3>
         </div>
       </div>
+
+      <Items selectedMonth={month} />
     </>
   )
 }
